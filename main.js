@@ -30,6 +30,9 @@ var app = new Vue({
       },
     ],
   },
+  components: {
+    MyDemoLocalComponent
+  },
   methods: {
     updateFavorite: function (name, value) {
         let f = _.find(this.foods, function(f) { return f.name === name });
