@@ -1,0 +1,11 @@
+.food-item {
+    border: 1px solid grey;
+    min-width: 400px;
+    display: inline-block;
+    margin: 5px;
+    padding-left: 10px;
+}
+
+.more-button {
+    display: block;
+}
