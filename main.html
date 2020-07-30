@@ -13,7 +13,7 @@
                 <div class="food-title-container">
                     <p> {{food.name}} - {{food.description}} </p>
                     <span v-on:click="food.is_fav = false" v-show="food.is_fav" class="fav"><i class="fas fa-star"></i></span>
-                    <span v-on:click="food.is_fav = true" v-show="!food.is_fav" class="fav"><i class="far fa-star"></i></span>
+                    <span @click="food.is_fav = true" v-show="!food.is_fav" class="fav"><i class="far fa-star"></i></span>
                 </div>
 
                 <img v-bind:src="food.src" width="100" height="100" @mouseover="console.log(`over image ${food.name}`)"/>
