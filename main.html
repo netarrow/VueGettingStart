@@ -16,7 +16,8 @@
                     <span v-on:click="food.is_fav = true" v-show="!food.is_fav" class="fav"><i class="far fa-star"></i></span>
                 </div>
 
-                <img v-bind:src="food.src" width="100" height="100"/>
+                <img v-bind:src="food.src" width="100" height="100" @mouseover="console.log(`over image ${food.name}`)"/>
+
                 <p v-if="food.percent_carbs >= 80">This food is made up mostly of carbohidrates</p>
                 <p v-else-if="food.percent_carbs >=40 && food.percent_carbs < 80">A significant portion of this food is made of carbohidrates</p>
                 <p v-else>This food is not a significant source of carbohidrates</p>
