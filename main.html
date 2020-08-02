@@ -10,12 +10,12 @@
             <my-demo-global-component></my-demo-global-component>
             <my-demo-local-component></my-demo-local-component>
 
-            <h1>{{title}}</h1>
-            <h2>{{subtitle}}</h2>
+            <h1>{{data.title}}</h1>
+            <h2>{{data.subtitle}}</h2>
 
-        <p>Your favorites: {{favorites}}</p>
+        <p>Your favorites: {{data.favorites}}</p>
 
-           <div class="food-item" v-for="food in foods" :key="food.name">
+           <div class="food-item" v-for="food in data.foods" :key="food.name">
                 <div class="food-title-container">
                     <p> {{food.name}} - {{food.description}} </p>
                     <span @click="updateFavorite(food.name, false)" v-show="food.is_fav" class="fav"><i class="fas fa-star"></i></span>
@@ -32,6 +32,8 @@
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/2.1.1/vuex.min.js"></script>
         <script src="lodash.js"></script>
         <script src="my-demo-global-component.js"></script>
         <script src="my-demo-local-component.js"></script>

@@ -1,6 +1,5 @@
-var app = new Vue({
-  el: "#the_food_app",
-  data: {
+const store = new Vuex.Store({ 
+  state: {
     title: "Vue app title",
     subtitle: "subtitle",
     favorites: 0,
@@ -30,24 +29,40 @@ var app = new Vue({
       },
     ],
   },
+  getters: {
+    state: state => {
+      return state;
+    }
+  }
+ });
+
+
+var app = new Vue({
+  el: "#the_food_app",
+  computed: {
+    data: function() {
+      return store.getters.state;
+    }
+  },
   components: {
     MyDemoLocalComponent
   },
   methods: {
     updateFavorite: function (name, value) {
-        let f = _.find(this.foods, function(f) { return f.name === name });
+        let f = _.find(store.getters.state.foods, function(f) { return f.name === name });
 
         if(f) {
+          // todo, try to update using actions and mutations, not update directly state
             f.is_fav = value;
 
             let fav = 0;
-            this.foods.forEach(f => {
+            store.getters.state.foods.forEach(f => {
                 if(f.is_fav) {
                     fav++;
                 }
             });
 
-            this.favorites = fav;
+            store.getters.state.favorites = fav;
         }
     },
   },
