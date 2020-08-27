@@ -1,3 +1,5 @@
+import mapActions from 'vuex'
+
 const store = new Vuex.Store({ 
   state: {
     title: "Vue app title",
