@@ -1,4 +1,3 @@
-import mapActions from 'vuex'
 
 const store = new Vuex.Store({ 
   state: {
@@ -49,12 +48,16 @@ const store = new Vuex.Store({
       setTimeout(function() {
         context.commit('toggleFav', data);
       }, 2000);
+    },
+    test: (context) => {
+      alert('qq')
     }
   }
  });
 
 var app = new Vue({
   el: "#the_food_app",
+  store: store,
   computed: {
     data: function() {
       return store.getters.state;
@@ -78,6 +81,7 @@ var app = new Vue({
      store.commit('toggleFav', {name, value})
      //store.dispatch('toggleFav', {name, value})
     },
+  ...Vuex.mapActions(['test'])
   },
 });
 
