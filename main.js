@@ -2,7 +2,6 @@ const store = new Vuex.Store({
   state: {
     title: "Vue app title",
     subtitle: "subtitle",
-    favorites: 0,
     foods: [
       {
         name: "apple",
@@ -10,7 +9,7 @@ const store = new Vuex.Store({
         src:
           "https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg",
         percent_carbs: 79,
-        is_fav: true,
+        is_fav: false,
       },
       {
         name: "eggs",
@@ -36,32 +35,32 @@ const store = new Vuex.Store({
   },
   mutations: {
     toggleFav: (state, data) => {
-         let f = _.find(store.getters.state.foods, function(f) { return f.name === data.name });
+        let f = _.find(store.getters.state.foods, function(f) { return f.name === data.name });
 
         if(f) {
             f.is_fav = data.value;
-
-            let fav = 0;
-            store.getters.state.foods.forEach(f => {
-                if(f.is_fav) {
-                    fav++;
-                }
-            });
-
-            store.getters.state.favorites = fav;
         } 
     }
   }
  });
-
 
 var app = new Vue({
   el: "#the_food_app",
   computed: {
     data: function() {
       return store.getters.state;
-    }
+    },
+    favorites: function() {
+      let fav = 0;
+      store.getters.state.foods.forEach(f => {
+        if(f.is_fav) {
+            fav++;
+        }
+      });
+
+      return fav;
   },
+},
   components: {
     MyDemoLocalComponent
   },
@@ -71,4 +70,5 @@ var app = new Vue({
     },
   },
 });
+
 Vue.config.devtools = true
