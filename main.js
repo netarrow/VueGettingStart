@@ -41,6 +41,13 @@ const store = new Vuex.Store({
             f.is_fav = data.value;
         } 
     }
+  },
+  actions: {
+    toggleFav: (context, data) => {
+      setTimeout(function() {
+        context.commit('toggleFav', data);
+      }, 2000);
+    }
   }
  });
 
@@ -66,7 +73,8 @@ var app = new Vue({
   },
   methods: {
     updateFavorite: function (name, value) {
-      store.commit('toggleFav', {name, value})
+     store.commit('toggleFav', {name, value})
+     //store.dispatch('toggleFav', {name, value})
     },
   },
 });
